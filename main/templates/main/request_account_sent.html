@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+
+{% block title %}Request Account Sent{% endblock title %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+<title>Account Request Sent</title>
+<div class="container-fluid d-flex flex-grow-1 align-items-center justify-content-center">
+    <div class="row">
+        <div class="col-lg">
+            <h3>Request Sent!</h3>
+            <p>Please check the inbox of the email account that you specified</p>
+            <a href="{% url 'login' %}" class="btn btn-primary">Return to login page</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

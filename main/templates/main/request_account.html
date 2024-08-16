@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+
+{% block title %}Request Account{% endblock title %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container-fluid d-flex flex-grow-1 align-items-center justify-content-center">
+    <div class="card col-lg-6 rounded-3">
+        <div class="card-body">
+            <h5 class="card-title">Account Request</h5>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% crispy request_account_form %}
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    /*
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        document.querySelector("option[value='SA']").remove();
+    });
+
+    document.querySelector("#button-id-submit-button").onclick = function() {
+        let date = new Date(document.getElementById("birthdate").value);
+        let dd = String(date.getDate()).padStart(2, '0');
+        let mm = String(date.getMonth() + 1).padStart(2, '0');
+        let yyyy = date.getFullYear();
+        let name = document.getElementById("email").value.substring(0, document.getElementById("email").value.lastIndexOf("@"));
+
+        console.log(`output = ${name}${dd}${mm}${yyyy}`)
+        document.getElementById("password1").value = `${name}${dd}${mm}${yyyy}`;
+        document.getElementById("password2").value = `${name}${dd}${mm}${yyyy}`;
+        document.querySelector("form").submit();
+    }
+   	*/
+</script>
+{% endblock content %}

@@ -1,0 +1,57 @@
+/* Poppins Font
+font-family: 'Poppins'
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&display=swap');
+
+:root {
+    /*--upmaroon: #7B1113;*/
+    --blue: #3b38f5;    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: 'Poppins';
+}
+
+h1 { 
+    font-size: 64px; 
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 { 
+    font-size: 40.32px; 
+}
+
+h3 { 
+    font-size: 25.4px; font-weight: bold;
+}
+
+p { 
+    font-size: 16px; 
+}
+
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+td, th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #dddddd;
+}
+
+.badge {
+	background-color: var(--blue);
+}

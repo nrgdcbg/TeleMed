@@ -1,0 +1,141 @@
+{% extends 'main/base.html' %}
+        {% block navbar %}
+            {% include 'main/navbar.html' %}
+        {% endblock navbar %}
+        {% block content %}
+
+        <div class="container h-100 my-5">
+            <div class="row">
+                <div class="col">
+                    <h1>Patients Registered</h1>
+                    <div class="input-group my-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input id="filter-1" class="form-control" type="text" placeholder="Filter by name" onkeyup="search1()">
+                    </div>
+                    <table class="table table-striped table-hover my-3 rounded-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Sex</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Patient Info</th>
+                            </tr>
+                        </thead>	
+                        <tbody>
+                            {% for patient in patients %}
+                                <tr name="results-1" class="align-middle">
+                                    <td name="patientFname-1">{{patient.account.first_name}} {{patient.account.last_name}}</td>
+                                    <td>
+                                        {{patient.account.age}}
+                                    </td>
+                                    <td>
+                                        {{patient.account.sex}}
+                                    </td>
+                                    <td>
+                                        {{patient.account.contact_number}}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'patient_page' patient.id %}">View Patient Profile</a>
+                                    </td>
+                                </tr>
+                            
+                            {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center">
+
+                                        No patients registered
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>			
+                </div>
+                </table>			
+            </div>
+
+            <div class="col">
+                <h1>Patients Under Your Care</h1>
+                <div class="input-group my-3">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input id="filter-2" class="form-control" type="text" placeholder="Filter by name" onkeyup="search2()">
+                </div>
+                <table class="table table-striped table-hover my-3 rounded-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Sex</th>
+                            <th scope="col">Contact Number</th>
+                            <th scope="col">Patient Info</th>
+                        </tr>
+                    </thead>	
+                    <tbody>
+                        {% for p in pcr %}
+                            <tr name="results-2" class="align-middle">
+                                <td name="patientFname-2">{{p.account.first_name}} {{p.account.last_name}}</td>
+                                <td>
+                                    {{p.account.age}}
+                                </td>
+                                <td>
+                                    {{p.account.sex}}
+                                </td>
+                                <td>
+                                    {{p.account.contact_number}}
+                                </td>
+                                <td>
+                                    <a href="{% url 'patient_page' p.id %}">View Patient Profile</a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    No patients registered
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>			
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function search1() {
+            console.log(document.querySelector("#filter-1").value)
+            let filter = document.getElementById("filter-1").value.toUpperCase();
+            let results = document.getElementsByName("results-1");
+            if (results !== null) {
+                for (let i=0; i<(results.length); i++) {
+                    let name = results[i].querySelector("[name=patientFname-1]").innerText;
+                    if (name.toUpperCase().includes(filter)){
+                        results[i].style.display = "";
+                    } else {
+                        results[i].style.display = "none";
+                    } 
+                }
+            }
+        }
+
+        function search2() {
+            console.log(document.querySelector("#filter-2").value)
+            let filter = document.getElementById("filter-2").value.toUpperCase();
+            let results = document.getElementsByName("results-2");
+            if (results !== null) {
+                for (let i=0; i<(results.length); i++) {
+                    let name = results[i].querySelector("[name=patientFname-2]").innerText;
+                    if (name.toUpperCase().includes(filter)){
+                        results[i].style.display = "";
+                    } else {
+                        results[i].style.display = "none";
+                    } 
+                }
+            }
+        }
+    </script>
+     
+{% endblock content %}
